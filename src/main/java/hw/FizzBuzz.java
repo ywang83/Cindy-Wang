@@ -1,6 +1,11 @@
 package hw;
 
 public class FizzBuzz {
+    public static void main(String arg[]){
+        FizzBuzz fb = new FizzBuzz();
+        fb.getNumber(3);
+    }
+
     public String getNumber(int n)
     {
         for(n = 1; n<100; n++){
@@ -16,12 +21,6 @@ public class FizzBuzz {
             else {System.out.println (Integer.toString(n));}
         }
         return null;
-    }
-
-
-    public static void main(String arg[]){
-        FizzBuzz fb = new FizzBuzz();
-        fb.getNumber(3);
     }
 }
 
