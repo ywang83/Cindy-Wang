@@ -11,10 +11,11 @@ Discussion: What would be a really simple solution if n were not an argument, i.
 
   ```System.out.println(17);```
 
-Since you know 17 could not be divided by 3, 5, or 15.
+  Since you know 17 could not be divided by 3, 5, or 15.
 
 ### Part 3
 Discussion: How could you have automatically tested your initial solution from part 2?
+Introduced another variable ```m``` and an ```if...else``` statement to test the initial input from the command line. If requirnment does not reached, "error" will be printed.
 
 ### Part 4
 Discussion: What changes between parts 2, 3, and 4, and what stays the same? Does it matter what list implementation you choose? If so, in what way(s)?
