@@ -5,26 +5,38 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class FBTest {
-    private FB fixture;
 
-    @Before
-    public void setUp() throws Exception {
-        fixture = new FB();
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        fixture = null;
+    @Test
+    public void FB10minus() {
+        assertEquals("buzz", FB.getNumber(-10));
     }
 
     @Test
-    public void getNumber() throws Exception {
-        int n=10;
-        String Expected[]= {"getNumber()"};
-        String output[] = {"1","2","fizz","4","buzz","fizz","7","8","fizz"};
-        assertEquals(output,Expected);
+    public void FB1minus() {
+        assertEquals("-1", FB.getNumber(-1));
+    }
+
+    @Test
+    public void FB0() {
+        assertEquals("0", FB.getNumber(0));
+    }
+
+    @Test
+    public void FB1() {
+        assertEquals("1", FB.getNumber(1));
+    }
+
+    @Test
+    public void FB7() {
+        assertEquals("7", FB.getNumber(7));
+    }
+
+    @Test
+    public void FB17() {
+        assertEquals("17",FB.getNumber(17));
     }
 
 }
