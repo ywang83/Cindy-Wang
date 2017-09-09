@@ -22,4 +22,4 @@ Introduced another variable ```m``` and an ```if...else``` statement to test the
 Discussion: What changes between parts 2, 3, and 4, and what stays the same? Does it matter what list implementation you choose? If so, in what way(s)?
 
 1. The ```if...else``` statement always stay the same, while the main class and variables could be changed.
-2. I tried ```ArrayList``` and ```LinkedList``` both. They are only differ in running speed in this case. ```ArrayList``` seems to be faster. 
+2. I tried ```ArrayList``` and ```LinkedList``` both. They are only different in running speed in this case. ```ArrayList``` seems to be faster. 
