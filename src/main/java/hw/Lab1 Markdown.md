@@ -23,4 +23,3 @@ Discussion: What changes between parts 2, 3, and 4, and what stays the same? Doe
 
 1. The ```if...else``` statement always stay the same, while the main class and variables could be changed.
 2. I tried ```ArrayList``` and ```LinkedList``` both. They are only differ in running speed in this case. ```ArrayList``` seems to be faster. 
-
