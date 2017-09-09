@@ -2,11 +2,10 @@ package hw;
 
 public class FizzBuzz {
     public static void main(String arg[]){
-        FizzBuzz fb = new FizzBuzz();
-        fb.getNumber(3);
+        getNumber(3);
     }
 
-    public String getNumber(int n)
+    public static String getNumber(int n)
     {
         for(n = 1; n<100; n++){
             if(n%15 == 0 ){

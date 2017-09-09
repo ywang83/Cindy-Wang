@@ -1,21 +1,15 @@
 package hw;
 
 public class FB {
-    public String getNumber()
+    public static String getNumber(int n)
     {
-        for(int n = 1; n<100; n++){
-            if(n%15 == 0 ){
-               System.out.println("fizzbuzz");
-            }
-            else if(n%5 == 0 ){
-                System.out.println("buzz");
-            }
-            else if(n%3 == 0 ){
-                System.out.println("fizz");
-            }
-            else {System.out.println( Integer.toString(n));}
-        }
-        return null;
+            if(n%15 == 0 )
+                return "fizzbuzz";
+            else if(n%5 == 0 )
+                return "buzz";
+            else if(n%3 == 0 )
+                return "fizz";
+            else return Integer.toString(n);
     }
 }
 
