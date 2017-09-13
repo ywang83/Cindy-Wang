@@ -1,4 +1,5 @@
 package hw;
+
 import java.util.Arrays;
 
 public class Array {

@@ -6,6 +6,7 @@ one based on the source code, and one based on an incorrect test.
 # Learning Objectives
 
 * Simple hello world example
+* this is a test
 * Building with Gradle (using the Gradle wrapper)
 * Automated unit testing with JUnit
 * Continuous integration with Travis
