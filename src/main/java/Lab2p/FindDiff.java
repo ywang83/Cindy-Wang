@@ -1,4 +1,4 @@
-package Lab2;
+package Lab2p;
 import java.util.Arrays;
 
 public class FindDiff {

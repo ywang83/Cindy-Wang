@@ -1,17 +1,18 @@
-package Lab2;
+package Lab2p;
 
-public class Unique {
+import java.util.Arrays;
+
+public class SearchArray {
     public static void main(String args[]) {
         System.out.println(search());
     }
 
     public static int search() {
-        int[] x = new int[]{1, 45, 78, 66, 89, 66};
+        int[] x = new int[]{1, 45, 78, 34, 89, 66};
+        int target = 45;
         for (int i = 0; i < x.length; i++) {
-            for (int j = i+1; j < x.length; j++)
-            if (x[i] == x[j]) {
-                return x[i];
-            }
+            if (x[i] == target)
+                return i;
         }
         return -1;    // target not found
     }
