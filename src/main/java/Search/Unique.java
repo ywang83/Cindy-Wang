@@ -1,4 +1,6 @@
-package Lab2p;
+package Search;
+
+import Lab2p.Search;
 
 public class Unique {
     public static void main(String args[]) {

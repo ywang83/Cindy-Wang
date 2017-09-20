@@ -1,4 +1,5 @@
-package Lab2p;
+package Search;
+
 import java.util.*;
 
 import static java.lang.Integer.compare;

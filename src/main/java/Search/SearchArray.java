@@ -1,4 +1,4 @@
-package Lab2p;
+package Search;
 
 import java.util.Arrays;
 
