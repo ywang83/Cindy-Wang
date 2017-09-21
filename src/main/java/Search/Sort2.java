@@ -1,7 +1,5 @@
 package Search;
 
-import Lab2p.Search;
-
 import java.util.Arrays;
 
 public class Sort2 {

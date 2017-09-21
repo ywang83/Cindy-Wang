@@ -1,7 +1,9 @@
 package Lab2;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class TestTeam {
 
@@ -29,7 +31,7 @@ public class TestTeam {
       // if we landed here, we're good!
     }
   }
-  
+
   // TODO testConstructorValidFunding
   @Test
   public void testConstructorValidFunding() {
