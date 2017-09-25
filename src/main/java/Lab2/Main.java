@@ -11,7 +11,8 @@ public class Main {
     final Team t1 = new Team("USA", "Klinsmann", 500);
     final Team t2 = new Team("Chile", "Pizzi", 600);
     final Team t3 = new Team("Germany", "Löw", 700);
-    final Team[] array = {t1, t2, t3};
+    final Team t4 = new Team("USA", "Lipi", 700);
+    final Team[] array = {t1, t2, t3, t4};
     final List<Team> list = Arrays.asList(array);
 
     final Scanner keyboard = new Scanner(System.in);
@@ -23,11 +24,11 @@ public class Main {
     System.out.println("  ");
 
     // Runs the linear search on the array
-    final Optional<Integer> index1 = Search.findTeamPosition(array, key);
+    final int index1 = Search.findTeamPosition(array, key);
     checkTeamArrayIndex(array, index1);
 
     // Runs the linear search on the list
-    final Optional<Integer> index2 = Search.findTeamPosition(list, key);
+    final int index2 = Search.findTeamPosition(list, key);
     checkTeamListIndex(list, index2);
 
     // Get funding level
@@ -38,11 +39,11 @@ public class Main {
     System.out.println("  ");
 
     // Runs the linear search on the array
-    final Optional<Integer> index3 = Search.findTeamMinFunding(array, funding);
+    final int index3 = Search.findTeamMinFunding(array, funding);
     checkTeamArrayIndex(array, index3);
 
     // Runs the binary search on the array
-    final Optional<Integer> index4 = Search.findTeamMinFundingFast(array, funding);
+    final int index4 = Search.findTeamMinFundingFast(array, funding);
     checkTeamArrayIndex(array, index4);
   }
 
@@ -55,24 +56,25 @@ public class Main {
     System.out.println("  ");
   }
 
-  static void checkTeamArrayIndex(final Team[] array, final Optional<Integer> index) {
+  static void checkTeamArrayIndex(final Team[] array, final int index) {
     // Checks the index
-    if (index.isPresent()) {
+    if (index!=-1) {
       System.out.println("Found!");
-      final int pos = index.get();
+      final int pos = index;
       final Team team = array[pos];
       // TODO DRY - eliminate this code duplication
       Print(team, pos);
+
     } else {
       System.out.println("Not Found!");
     }
   }
 
-  static void checkTeamListIndex(final List<Team> list, final Optional<Integer> index) {
+  static void checkTeamListIndex(final List<Team> list, final int index) {
     // Checks the index
-    if (index.isPresent()) {
+    if (index!=-1) {
       System.out.println("Found!");
-      final int pos = index.get();
+      final int pos = index;
       final Team team = list.get(pos);
       // TODO DRY - eliminate this code duplication
       Print(team, pos);

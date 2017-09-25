@@ -6,7 +6,7 @@ import java.util.Optional;
 public class Search {
 
   /** Looks for the position of the named team in an array. */
-  public static Optional<Integer> findTeamPosition(final Team[] arr, final String key) {
+  public static int findTeamPosition(final Team[] arr, final String key) {
     // Gets the array size
     final int size = arr.length;
     // Runs through a for loop to check
@@ -14,23 +14,23 @@ public class Search {
       // Gets the current item at index and compare name to key
       if (arr[i].getName().equals(key)) {
         // Return the index of where the item with key is located
-        return Optional.of(i);
+        return i;
       }
     }
     // If it does not exist in the array then return an empty Optional
-    return Optional.empty();
+    return -1;
   }
 
   /** Looks for the position of the named team in a list. */
-  public static Optional<Integer> findTeamPosition(final List<Team> list, final String key) {
+  public static int findTeamPosition(final List<Team> list, final String key) {
     // TODO complete this method
       final int size = list.size();
       for (int i = 0; i < size; i++) {
           if (list.get(i).getName().equals(key)) {
-              return Optional.of(i);
+              return i;
       }
     }
-    return Optional.empty();
+    return -1;
   }
 
   /**
@@ -39,15 +39,15 @@ public class Search {
    * @pre arr is sorted
    * @post arr[result].funding >= minFunding && for all 0 <= i < result : arr[i].funding < minFunding
    */
-  public static Optional<Integer> findTeamMinFunding(final Team[] arr, final int minFunding) {
+  public static int findTeamMinFunding(final Team[] arr, final int minFunding) {
     // TODO complete this method
       final int size = arr.length;
       for (int i = 0; i < size; i++) {
           if (arr[i].getFunding() >= minFunding) {
-              return Optional.of(i);
+              return i;
       }
     }
-        return Optional.empty();
+        return -1;
   }
 
   /**
@@ -59,7 +59,7 @@ public class Search {
    * @pre arr is sorted
    * @post arr[result].funding >= minFunding && for all 0 <= i < result : arr[i].funding < minFunding
    */
-  public static Optional<Integer> findTeamMinFundingFast(final Team[] arr, final int minFunding) {
+  public static int findTeamMinFundingFast(final Team[] arr, final int minFunding) {
     // TODO complete this method
     // Gets the array size
     final int size = arr.length;
@@ -72,12 +72,12 @@ public class Search {
       while (low <= high) {
           int mid = (low + high) / 2;
           if (arr[low].getFunding() >= minFunding)
-              return Optional.of(low);
+              return low;
           else if (arr[low].getFunding() < minFunding && arr[mid].getFunding() < minFunding)
               low = mid +1;
           else // (arr[low].getFunding() < minFunding && arr[mid].getFunding() >= minFunding)
               high = mid;
       }
-      return Optional.empty();  //arr[high].getFunding() < minFunding
+      return -1;  //arr[high].getFunding() < minFunding
   }
 }
