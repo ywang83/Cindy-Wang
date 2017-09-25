@@ -1,0 +1,34 @@
+ywang83:~/workspace/lab2-ywang83 (master) $ ./build/scripts/lab2-ywang83 
+Enter name to search: jhgfds
+Looking for team jhgfds
+  
+Not Found!
+Not Found!
+  
+Enter min funding to search: ./gradlew test
+Exception in thread "main" java.lang.NumberFormatException: For input string: "./gradlew test"
+        at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+        at java.lang.Integer.parseInt(Integer.java:569)
+        at java.lang.Integer.parseInt(Integer.java:615)
+        at edu.luc.cs.cs271.lab2.Main.main(Main.java:36)
+ywang83:~/workspace/lab2-ywang83 (master) $ ./build/scripts/lab2-ywang83 s
+Enter name to search: s         
+Looking for team s
+  
+Not Found!
+Not Found!                                                                     s"
+        at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+Enter miat java.lang.Integer.parseInt(Integer.java:569)
+Exceptioat java.lang.Integer.parseInt(Integer.java:615)ion: For input string: "
+        at edu.luc.cs.cs271.lab2.Main.main(Main.java:36)
+ywang83:~/workspace/lab2-ywang83 (master) $ ./gradlew tests
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Task 'tests' not found in root project 'lab2-ywang83'. Some candidates are: 'tasks', 'test'.
+
+* Try:
+Run gradlew tasks to get a list of available tasks. Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+* Get more help at https://help.gradle.org

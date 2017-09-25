@@ -1,2 +1,6 @@
 https://docs.oracle.com/javase/8/docs/api/java/util/List.html
 public interface List<E>
+
+
+http://www.cnblogs.com/dolphin0520/p/3736238.html
+浅析Java中的final关键字
