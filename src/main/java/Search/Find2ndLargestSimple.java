@@ -20,7 +20,9 @@ public class Find2ndLargestSimple {
         int largest = array[0];
         int secondLargesst = array[0];
         int i;
-        for (i = 0; i < array.length; i++) {
+
+       // for (i = 0; i < array.length; i++) {
+        for (i = array.length-1;i >= 0; i--) {
             if (array[i] > largest) {
                 secondLargesst = largest;
                 largest = array[i];
