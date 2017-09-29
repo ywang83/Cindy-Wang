@@ -10,8 +10,8 @@ public class Find2ndLargestOptional {
         final Integer[] array1 = { 2, -11, -8, 3,  5, -2, 7, 13, 17, 11 };
         final Integer[] array2 = { 2, -11, -8, 17, 5, -2, 7, 13, 17, 11 };
 
-        System.out.println(FindSecond(array1));
-        System.out.println(FindSecond(array2));
+        System.out.println(FindSecond(array1));// Optional[7]
+        System.out.println(FindSecond(array2));// Optional[8]
 }
 
     public static Optional<Integer> FindSecond(Integer[]array ) {
@@ -20,7 +20,7 @@ public class Find2ndLargestOptional {
         int i;
 
         for ( i = 0; i < array.length; i++) {
-            if (array[i] < max && array[i]>=secondLargest)
+            if (i!=(Arrays.asList(array)).indexOf(max)&& array[i] <= max && array[i]>secondLargest)
                 secondLargest = array[i];
         }
         //return Optional.of(i);
