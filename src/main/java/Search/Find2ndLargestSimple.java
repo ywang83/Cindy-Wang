@@ -15,8 +15,10 @@ public class Find2ndLargestSimple {
     }
 
     public static Optional<Integer> FindSecond(Integer[]array ) {
-        int largest = Integer.MIN_VALUE;
-        int secondLargesst = Integer.MIN_VALUE;
+        //int largest = Integer.MIN_VALUE;
+        //int secondLargesst = Integer.MIN_VALUE;
+        int largest = array[0];
+        int secondLargesst = array[0];
         int i;
         for (i = 0; i < array.length; i++) {
             if (array[i] > largest) {
