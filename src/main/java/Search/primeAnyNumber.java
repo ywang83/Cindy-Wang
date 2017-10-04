@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class primeAnyNumber {
-	
-	public class prime {
 	public static void main(String[] args) {
 		 int count=0;
 	     int num = 2;
@@ -23,7 +21,7 @@ public class primeAnyNumber {
 	    			num++;
 	    		}
 	    	}
-	    }
+}
 	
 	
 // 	    public static void main(String[] args) {
