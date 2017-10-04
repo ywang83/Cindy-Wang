@@ -20,18 +20,22 @@ public class Find2ndLargestSimple {
         int largest = array[0];
         int secondLargesst = array[0];
         int i;
+        int index =0;
 
-       // for (i = 0; i < array.length; i++) {
-        for (i = array.length-1;i >= 0; i--) {
-            if (array[i] > largest) {
+        for (i = 0; i < array.length; i++) {
+        //for (i = array.length-1;i >= 0; i--) {
+            if (array[i] >= largest) {
                 secondLargesst = largest;
                 largest = array[i];
+                index = i;
             }
-            else if (array[i] > secondLargesst) {
+            else if (array[i] >= secondLargesst) {
                secondLargesst = array[i];
+                index = i;
            }
         }
-        return Optional.of((Arrays.asList(array)).indexOf(secondLargesst));
+        return Optional.of(index);
+        // return Optional.of((Arrays.asList(array)).indexOf(secondLargesst));
     }
 }
 
