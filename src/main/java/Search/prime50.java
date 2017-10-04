@@ -10,7 +10,6 @@ public class prime50 {
 	        System.out.print(subA);
 	    }
 	    	
-	    	
 	    public static ArrayList<Integer> getArrayList (){
 	    	ArrayList<Integer> a = new ArrayList(); 
 	    	
@@ -21,14 +20,11 @@ public class prime50 {
 	                isPrime=0;
 	          }
 	        }
-	            	if(isPrime==1){
-	            		
+	            	if(isPrime==1){	
 	            		 a.add(i);
-	            
 	            }
 	        }
-			return a;
-			
+			return a;	
 	   }
 }     
 
