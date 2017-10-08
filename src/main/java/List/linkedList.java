@@ -11,11 +11,13 @@ public class linkedList {
 
     public static void main(String[] args) {
         Node<String> hello = new Node<String>("hello");
+        Node<String> roger = new Node<String>("Roger");
         Node<String> cindy = new Node<String>("Cindy");
         Node<String> what = new Node<String>("what");
         Node<String> up = new Node<String>("up");
 
         hello.next = cindy;
+        hello.next = roger;
         cindy.next = what;
         what.next = up;
 //        up.next = hello;
@@ -29,7 +31,7 @@ public class linkedList {
 
 //        LinkedList<Node<String>> list = new LinkedList<Node<String>>();
         linkedList list = new linkedList();
-        printList(myList);
+//        printList(myList);
 
 //        list.printNodeCycle(hello,hello);
         list.printNode(hello);
@@ -61,6 +63,7 @@ public class linkedList {
         }
         while (curr != null) {
             System.out.print(curr.data + " ");
+//            System.out.print(curr);
             curr = curr.next;
         }
         System.out.println(curr);
