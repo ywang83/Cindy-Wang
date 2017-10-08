@@ -19,6 +19,7 @@ hello.next=cindy;
 cindy.next=what;
 what.next=up;
 LinkedList<Node<String>> list = new LinkedList<Node<String>>();
+List<String> myList = new LinkedList<>(Arrays.asList("hello", "Cindy", "what", "up"));
 <E> void printNode(Node<E> curr) {
     if (curr == null) {
         return;

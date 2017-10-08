@@ -11,6 +11,7 @@
 `Node@564160838(hello, Node@2012232625)Node@2012232625(Cindy, Node@846063400)Node@846063400(what, Node@627150481)Node@627150481(up)null`
   
 ## 4. Which way to create the list more clearly conveys the actual structure of the list?
+The first way more clearly conveys the actual list structure, because it shows the link between Nodes.
 
 ## 5. What happens if you use the `printNode` method on this circular list?
 It will go into an infinite loop.

@@ -23,11 +23,11 @@ public class linkedList {
 //        up.next = hello;
 
         final List<String> myList = new LinkedList<>(Arrays.asList("hello", "Cindy", "what", "up"));
+        List<Node<String>> myList1 = new LinkedList<Node<String>>();
 //        final Iterator i = myList.iterator();
 //      TODO while loop using i.hasNext() and i.next()
 
         String[] myArray = {"hello", "Cindy", "what", "up"};
-
 
 //        LinkedList<Node<String>> list = new LinkedList<Node<String>>();
         linkedList list = new linkedList();
