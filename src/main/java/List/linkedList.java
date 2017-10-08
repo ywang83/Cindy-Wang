@@ -81,7 +81,6 @@ public class linkedList {
     }
 
     <E> Node<E> deleteNode(Node<E> curr, int position) {
-
         if (position == 1) {
             curr = curr.next;
             curr.next = null;
