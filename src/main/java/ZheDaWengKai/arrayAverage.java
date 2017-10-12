@@ -7,7 +7,7 @@ public class arrayAverage {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         int sum=0;
-        int average =0;
+        double average =0;
         int[] array = new int[5];
         int i;
         for (i=0; i<array.length; i++){
