@@ -18,12 +18,14 @@ public class Find2ndLargestOptional {
         int secondLargest = array [0];
         int max = (int) Collections.max(Arrays.asList(array));
         int i;
+//        int index=0;
 
         for ( i = 0; i < array.length; i++) {
             if (i!=(Arrays.asList(array)).indexOf(max)&& array[i] <= max && array[i]>secondLargest)
                 secondLargest = array[i];
+//            index= i;
         }
-        //return Optional.of(i);
+//        return Optional.of(i);
         return Optional.of((Arrays.asList(array)).indexOf(secondLargest));
     }
 }

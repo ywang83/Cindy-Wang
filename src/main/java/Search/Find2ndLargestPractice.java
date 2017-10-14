@@ -1,11 +1,10 @@
 package Search;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-public class Find2ndLargestSimple {
+public class Find2ndLargestPractice {
     public static void main(String args[]) {
         final Integer[] array1 = { 2, -11, -8, 3,  5, -2, 7, 13, 17, 11 };
         final Integer[] array2 = { 2, -11, -8, 17, 5, -2, 7, 13, 17, 11 };
@@ -15,27 +14,23 @@ public class Find2ndLargestSimple {
     }
 
     public static Optional<Integer> FindSecond(Integer[]array ) {
-        //int largest = Integer.MIN_VALUE;
-        //int secondLargesst = Integer.MIN_VALUE;
-        int largest = array[0];
-        int secondLargesst = array[0];
+        int largest = Integer.MIN_VALUE;
+        int secondLargesst = Integer.MIN_VALUE;
+        List<Integer> list = Arrays.asList(array);
+//        int largest = array[0];
+//        int secondLargesst = array[0];
         int i;
         int index =0;
 
         for (i = 0; i < array.length; i++) {
-        //for (i = array.length-1;i >= 0; i--) {
-            if (array[i] >= largest) {
+            if (list.get(i) >= largest) {
                 secondLargesst = largest;
-                largest = array[i];
-                index = i;
+                largest = list.get(i);
+                index = list.indexOf(secondLargesst);
             }
-            else if (array[i] >= secondLargesst) {
-               secondLargesst = array[i];
-                index = i;
-           }
         }
-//        return Optional.of(index);
-         return Optional.of((Arrays.asList(array)).indexOf(secondLargesst));
+        return Optional.of(index);
+//         return Optional.of((Arrays.asList(array)).indexOf(secondLargesst));
     }
 }
 

@@ -5,8 +5,9 @@ import java.util.List;
 
 public class Find2ndLargest {
     public static void main(String args[]) {
-        Integer[] array1 = {45, -78, 34, 89, 66, 65, 105};
-        Integer[] array2 =  {22, 66, -78, 66, 49, 89, 66, 65};
+        Integer[] array1 = { 2, -11, -8, 3,  5, -2, 7, 13, 17, 11 };
+        Integer[] array2 = { 2, -11, -8, 17, 5, -2, 7, 13, 17, 11 };
+
         int x = FindSecond(array1);
         int y = FindSecond(array2);
         List<Integer> list1 = Arrays.asList(array1);

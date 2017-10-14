@@ -2,18 +2,16 @@ package Search;
 
 import java.util.Arrays;
 
-public class Sort2 {
+public class binarySearch {
     public static void main (String[] args){
-        System.out.println(binarySearch());
+        int[] array =  {2,3,4,5,32,34,54,56,98};
+        int x =32;
+        System.out.println(Arrays.toString(array));
+        System.out.println(binarySearch(array,x));
     }
 
-    private static int binarySearch() {
-       // int[] array = {2,3,4,5,34,56,98,32,54};
-        int[] array =  {2,3,4,5,32,34,54,56,98};
-        System.out.println(Arrays.toString(array));
-
+    private static int binarySearch(int[] array, int x) {
         int n= array.length;
-        //int k=n-1;
 
         int array1[] = new int[n];
         for (int i=0; i<n;i++){
@@ -21,7 +19,6 @@ public class Sort2 {
         }
         System.out.println(Arrays.toString(array1));
 
-        int x=55;
         int start = 0;
         int end = n-1;
 
