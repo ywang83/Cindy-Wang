@@ -20,7 +20,7 @@ public class fn {
         return p;
     }
 
-    //f(x)=a[0] + x(a[1] + x(a[2] +x(...(a[n-1] + x(a[n]))) )
+    //f(x)=a[0] + x(a[1] + x(a[2] +x(...x(a[n-1] + x(a[n]))) )
     public static double fxSmart (int n, double a[], double x){
         int i;
         double p=a[n];

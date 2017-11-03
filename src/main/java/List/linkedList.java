@@ -17,7 +17,7 @@ public class linkedList {
         Node<String> up = new Node<String>("up");
 
         hello.next = cindy;
-        hello.next = roger;
+//        hello.next = roger;
         cindy.next = what;
         what.next = up;
 //        up.next = hello;
