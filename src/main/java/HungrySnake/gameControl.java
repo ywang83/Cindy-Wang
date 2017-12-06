@@ -47,9 +47,11 @@ public class gameControl extends Panel implements Runnable, KeyListener{
     }
 
     public void DrawSnake(Graphics g){
-        g.setColor(Color.GREEN);
-        for (Point p : snake){
-            g.fillRect(p.x*pointWidth, p.y*pointHeight, pointWidth, pointHeight);
+        for (Point p : snake) {
+            g.setColor(Color.GREEN);
+            g.fillRect(p.x * pointWidth, p.y * pointHeight, pointWidth, pointHeight);
+            g.setColor(Color.black);
+            g.drawRect(p.x * pointWidth, p.y * pointHeight, pointWidth, pointHeight);
         }
         g.setColor(Color.black);
     }
