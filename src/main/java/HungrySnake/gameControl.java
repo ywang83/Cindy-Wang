@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -28,6 +29,7 @@ public class gameControl extends Panel implements Runnable, KeyListener {
         this.setPreferredSize(new Dimension(pointWidth * gridWidth, pointHeight * gridHeight));
 //        g.setColor(Color.black);
 //        g.drawRect(0,0,640,480);
+
         snake = new LinkedList<Point>();
 //        apple = new Point(10,10);
         restart();
@@ -44,6 +46,21 @@ public class gameControl extends Panel implements Runnable, KeyListener {
         }
     }
 
+//    public void update(Graphics g){
+//        Graphics offScreenGraphics;
+//        BufferedImage offscreen = null;
+//        Dimension d = this.getSize();
+//
+//        offscreen = new BufferedImage(d.width,d.height,BufferedImage.TYPE_INT_ARGB);
+//        offScreenGraphics = offscreen.getGraphics();
+//        offScreenGraphics.setColor(this.getBackground());
+//        offScreenGraphics.fillRect(0,0,d.width,d.height);
+//        offScreenGraphics.setColor(this.getForeground());
+//        paint(offScreenGraphics);
+//
+//        g.drawImage(offscreen,0,0,this);
+//    }
+
     public void Draw(Graphics g) {
         g.clearRect(0, 0, pointWidth*gridWidth,pointHeight*gridHeight+30);
         g.drawRect(0,0,pointWidth*gridWidth,pointHeight*gridHeight);
@@ -52,7 +69,6 @@ public class gameControl extends Panel implements Runnable, KeyListener {
 //        DrawGrid(g);
         DrawSnake(g);
         DrawApple(g);
-
     }
 
     public void DrawSnake(Graphics g) {
