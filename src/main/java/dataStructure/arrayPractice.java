@@ -1,12 +1,23 @@
 package dataStructure;
 
-import java.lang.annotation.ElementType;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class arrayPractice {
     public static void main(String[] args) {
         int[] array = {2, -11, -8, 3, 5, -2, 7, 13, 17, 11};
-
+        ArrayList<Integer> list =new ArrayList<>();
+        for (int i=0;i<array.length;i++){
+            list.add(array[i]);
+        }
+        for (int i=0;i<list.size();i++){
+            list.remove(list.size()-1);
+        }
+//        list.remove(2);
+        System.out.println(list);
+//        list.remove(2);
+//        System.out.println(list);
 
         System.out.println(Arrays.toString(array));
         print(array.length);
