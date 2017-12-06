@@ -11,12 +11,12 @@ public class Main {
     gameControl game = new gameControl();
 
 //    game = new gameControl();
-    game.setPreferredSize(new Dimension(640,480));
+    game.setPreferredSize(new Dimension(480,400));
     game.setVisible(true);
     game.setFocusable(true);
     frame.add(game);
     frame.setVisible(true);
-    frame.setSize(new Dimension(640,480));
+    frame.setSize(new Dimension(480,480));
   }
 
 }

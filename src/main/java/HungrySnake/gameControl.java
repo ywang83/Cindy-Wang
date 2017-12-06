@@ -7,7 +7,7 @@ import java.awt.event.KeyListener;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class gameControl extends Panel implements Runnable, KeyListener{
+public class gameControl extends Panel implements Runnable, KeyListener {
 
     private LinkedList<Point> snake;
     private Point apple;
@@ -16,37 +16,46 @@ public class gameControl extends Panel implements Runnable, KeyListener{
     private Thread runThread;
     private Graphics globalGraphics;
 
-    private final int pointWidth= 15;
-    private final int pointHeight= 15;
-    private final int gridWidth= 25;
-    private final int gridHeight= 25;
+    private final int pointWidth = 15;
+    private final int pointHeight = 15;
+    private final int gridWidth = 25;
+    private final int gridHeight = 25;
 
-    public void paint(Graphics g){
-        this.setPreferredSize(new Dimension(640, 480));
+    private int score = 0;
+
+    public void paint(Graphics g) {
+
+        this.setPreferredSize(new Dimension(pointWidth * gridWidth, pointHeight * gridHeight));
+//        g.setColor(Color.black);
+//        g.drawRect(0,0,640,480);
         snake = new LinkedList<Point>();
 //        apple = new Point(10,10);
         restart();
         placeApple();
-        snake.add(new Point(3,1));
-        snake.add(new Point(3,2));
-        snake.add(new Point(3,3));
-        g.fillRect(0,0,10,10);
-        globalGraphics =g.create();
+        snake.add(new Point(3, 1));
+        snake.add(new Point(3, 2));
+        snake.add(new Point(3, 3));
+        g.fillRect(0, 0, 10, 10);
+        globalGraphics = g.create();
         this.addKeyListener(this);
-        if(runThread==null){
+        if (runThread == null) {
             runThread = new Thread(this);
             runThread.start();
         }
     }
 
-    public void Draw(Graphics g){
-        g.clearRect(0,0,pointWidth*gridWidth,pointHeight*gridHeight);
+    public void Draw(Graphics g) {
+        g.clearRect(0, 0, pointWidth*gridWidth,pointHeight*gridHeight+30);
+        g.drawRect(0,0,pointWidth*gridWidth,pointHeight*gridHeight);
+        DrawScore(g);
+
 //        DrawGrid(g);
         DrawSnake(g);
         DrawApple(g);
+
     }
 
-    public void DrawSnake(Graphics g){
+    public void DrawSnake(Graphics g) {
         for (Point p : snake) {
             g.setColor(Color.GREEN);
             g.fillRect(p.x * pointWidth, p.y * pointHeight, pointWidth, pointHeight);
@@ -56,55 +65,60 @@ public class gameControl extends Panel implements Runnable, KeyListener{
         g.setColor(Color.black);
     }
 
-    public void DrawApple(Graphics g){
+    public void DrawApple(Graphics g) {
         g.setColor(Color.yellow);
-        g.fillOval(apple.x*pointWidth, apple.y*pointHeight, pointWidth, pointHeight);
+        g.fillOval(apple.x * pointWidth, apple.y * pointHeight, pointWidth, pointHeight);
         g.setColor(Color.black);
     }
 
-    public void placeApple(){
+    public void placeApple() {
         Random ran = new Random();
         int randomX = ran.nextInt(gridWidth);
         int randomY = ran.nextInt(gridHeight);
-        Point randomPoint = new Point(randomX,randomY);
-        while (snake.contains(randomPoint)){
+        Point randomPoint = new Point(randomX, randomY);
+        while (snake.contains(randomPoint)) {
             randomX = ran.nextInt(gridWidth);
             randomY = ran.nextInt(gridHeight);
-            randomPoint = new Point(randomX,randomY);
+            randomPoint = new Point(randomX, randomY);
         }
         apple = randomPoint;
     }
 
+    public void DrawScore(Graphics g) {
+        g.drawString("Score: " + score, 0, pointHeight * gridHeight + 10);
+    }
 
-    public void restart(){
+    public void restart() {
+        score = 0;
         snake.clear();
-        snake.add(new Point(3,1));
-        snake.add(new Point(3,2));
-        snake.add(new Point(3,3));
+        snake.add(new Point(3, 1));
+        snake.add(new Point(3, 2));
+        snake.add(new Point(3, 3));
         direction = gamePlay.noDirection;
     }
 
-    public void move(){
+    public void move() {
         Point head = snake.peekFirst();
         Point newPoint = head;
-        switch(direction){
+        switch (direction) {
             case gamePlay.up:
-                newPoint = new Point(head.x, head.y-1);
+                newPoint = new Point(head.x, head.y - 1);
                 break;
             case gamePlay.down:
-                newPoint = new Point(head.x, head.y+1);
+                newPoint = new Point(head.x, head.y + 1);
                 break;
             case gamePlay.left:
-                newPoint = new Point(head.x-1, head.y);
+                newPoint = new Point(head.x - 1, head.y);
                 break;
             case gamePlay.right:
-                newPoint = new Point(head.x+1, head.y);
+                newPoint = new Point(head.x + 1, head.y);
                 break;
         }
 
         snake.remove(snake.peekLast());
 
         if (newPoint.equals(apple)) {
+            score += 10;
             // hit the apple
             Point addPoint = (Point) newPoint.clone();
             switch (direction) {
@@ -123,18 +137,15 @@ public class gameControl extends Panel implements Runnable, KeyListener{
             }
             snake.push(addPoint);
             placeApple();
-        }
-        else if (newPoint.x<0||newPoint.x>gridWidth){
+        } else if (newPoint.x < 0 || newPoint.x > gridWidth) {
             // out of bound, reset game
             restart();
             return;
-        }
-        else if (newPoint.y<0||newPoint.y>gridHeight){
+        } else if (newPoint.y < 0 || newPoint.y > gridHeight) {
             // out of bound, reset game
             restart();
             return;
-        }
-        else if (snake.contains(newPoint)){
+        } else if (snake.contains(newPoint)) {
             // ran into itself, reset game
             restart();
             return;
@@ -145,14 +156,13 @@ public class gameControl extends Panel implements Runnable, KeyListener{
 
     @Override
     public void run() {
-        while (true){
+        while (true) {
             move();
             Draw(globalGraphics);
 
-            try
-            {
+            try {
                 Thread.currentThread();
-                Thread.sleep(100);
+                Thread.sleep(150);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -166,7 +176,7 @@ public class gameControl extends Panel implements Runnable, KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()){
+        switch (e.getKeyCode()) {
             case KeyEvent.VK_UP:
                 direction = gamePlay.up;
                 break;
@@ -187,6 +197,9 @@ public class gameControl extends Panel implements Runnable, KeyListener{
 
     }
 
+//    public void DrawGrid(Graphics g) {
+//        g.drawRect(0, 0, gridWidth * pointWidth, gridHeight * pointHeight);
+//    }
 //    public void DrawGrid(Graphics g){
 //        g.drawRect(0,0,gridWidth*pointWidth, gridHeight*pointHeight);
 //        for (int x = pointWidth; x<gridWidth*pointWidth; x+=pointWidth){
