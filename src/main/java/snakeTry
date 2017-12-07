@@ -1,0 +1,204 @@
+package HungrySnake;
+
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Main {
+  public static void main(final String[] args) {
+
+    JFrame frame = new JFrame("Hungry Snake");
+    gameControl game = new gameControl();
+
+    game.setPreferredSize(new Dimension(1000,1000));
+    game.setVisible(true);
+    game.setFocusable(true);
+    frame.add(game);
+    frame.setVisible(true);
+    frame.setSize(new Dimension(1000,1000));
+  }
+}
+
+
+
+package HungrySnake;
+
+import finalproject.Direction;
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.LinkedList;
+import java.util.Random;
+
+public class gameControl extends Panel implements Runnable, KeyListener {
+
+    private LinkedList<Point> snake;
+    private Point apple;
+    private int direction = Direction.noDirection;
+
+    private Thread runThread;
+    private Graphics globalGraphics;
+
+    private final int pointWidth = 15;
+    private final int pointHeight = 15;
+    private final int gridWidth = 50;
+    private final int gridHeight = 50;
+
+    private int score = 0;
+
+    public void paint(Graphics g) {
+
+        this.setPreferredSize(new Dimension(pointWidth * gridWidth, pointHeight * gridHeight));
+        globalGraphics = g.create();
+        this.addKeyListener(this);
+        if (runThread == null) {
+            runThread = new Thread(this);
+            runThread.start();
+
+            snake = new LinkedList<>();
+            startGame();
+            placeApple();
+            fillSnake();
+        }
+    }
+
+
+    public void Draw(Graphics g) {
+        g.clearRect(0, 0, 1000,1000);
+
+        g.setColor(Color.black);
+        g.drawRect(0,0,pointWidth*gridWidth,pointHeight*gridHeight);
+
+        DrawSnake(g);
+        DrawApple(g);
+        DrawScore(g);
+    }
+
+    public void DrawSnake(Graphics g) {
+        for (Point p : snake) {
+            g.setColor(Color.GREEN);
+            g.fillRect(p.x * pointWidth, p.y * pointHeight, pointWidth, pointHeight);
+            g.setColor(Color.black);
+            g.drawRect(p.x * pointWidth, p.y * pointHeight, pointWidth, pointHeight);
+        }
+    }
+
+    public void fillSnake(){
+        snake.add(new Point(10, 11));
+        snake.add(new Point(10, 12));
+        snake.add(new Point(10, 13));
+    }
+
+    public void DrawApple(Graphics g) {
+        g.setColor(Color.yellow);
+        g.fillOval(apple.x * pointWidth, apple.y * pointHeight, pointWidth, pointHeight);
+    }
+
+    public void placeApple() {
+        Random random = new Random();
+        int randomX = random.nextInt(gridWidth);
+        int randomY = random.nextInt(gridHeight);
+        Point randomPoint = new Point(randomX, randomY);
+        while (snake.contains(randomPoint)) {
+            randomX = random.nextInt(gridWidth);
+            randomY = random.nextInt(gridHeight);
+            randomPoint = new Point(randomX, randomY);
+        }
+        apple = randomPoint;
+    }
+
+    public void DrawScore(Graphics g) {
+        g.setColor(Color.black);
+        g.drawString("Score: " + score, 800, 20);
+    }
+
+    public void startGame() {
+        score = 0;
+        snake.clear();
+        fillSnake();
+        direction = Direction.noDirection;
+    }
+
+
+    public void move() {
+        Point head = snake.peekFirst();
+        Point newPoint = head;
+        switch (direction) {
+            case Direction.up:
+                newPoint = new Point(head.x, head.y - 1);
+                break;
+            case Direction.down:
+                newPoint = new Point(head.x, head.y + 1);
+                break;
+            case Direction.left:
+                newPoint = new Point(head.x - 1, head.y);
+                break;
+            case Direction.right:
+                newPoint = new Point(head.x + 1, head.y);
+                break;
+        }
+
+        snake.remove(snake.peekLast());
+
+        if (newPoint.equals(apple)) {
+            score += 10;
+            // hit the apple
+            Point addPoint = (Point) newPoint.clone();
+            snake.push(addPoint);
+            placeApple();
+        } else if (newPoint.x < 0 || newPoint.x > gridWidth) {
+            // out of bound, reset game
+            startGame();
+            return;
+        } else if (newPoint.y < 0 || newPoint.y > gridHeight) {
+            // out of bound, reset game
+            startGame();
+            return;
+        } else if (snake.contains(newPoint)) {
+            // ran into itself, reset game
+            startGame();
+            return;
+        }
+        snake.push(newPoint);
+
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            move();
+            Draw(globalGraphics);
+
+            try {
+                Thread.currentThread();
+                Thread.sleep(150);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_UP:
+                direction = Direction.up;
+                break;
+            case KeyEvent.VK_DOWN:
+                direction = Direction.down;
+                break;
+            case KeyEvent.VK_LEFT:
+                direction = Direction.left;
+                break;
+            case KeyEvent.VK_RIGHT:
+                direction = Direction.right;
+                break;
+        }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {}
+    @Override
+    public void keyReleased(KeyEvent e) {}
+}
